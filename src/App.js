@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  let fname = "John";
-  let lname = "Doe";
+  const fname = "John";
+  const lname = "Doe";
   return (
     <div className="App">
       <header className="App-header">
