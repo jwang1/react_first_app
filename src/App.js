@@ -1,30 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+const list = [
+  {
+    title: "React",
+    url: "https://facebook.github.io/react/",
+    author: "Jordan Walke",
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  {
+    title: "Redux",
+    url: "https://github.com/reactjs/redux",
+    author: "Dan Abramov, Andrew Clark",
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+  },
+];
 
 function App() {
   const fname = "John";
   const lname = "Doe";
+
+  //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="App-div">
-          <span><u>Hello <i>{fname} {lname}!</i></u></span>
-        </div>
 
-        <img src={logo} className="App-logo" alt="Hacker News" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link2"
-          href="https://iExpress.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hacker News (My latest updates)
-        </a>
-      </header>
+      { list.map( (item, i) => <div key={i}>{item.title}</div> ) } 
+
     </div>
   );
 }
