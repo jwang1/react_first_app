@@ -3,9 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let fname = "John";
+  let lname = "Doe";
   return (
     <div className="App">
       <header className="App-header">
+        <div className="App-div">
+          <span><u>Hello <i>{fname} {lname}!</i></u></span>
+        </div>
+
         <img src={logo} className="App-logo" alt="Hacker News" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
