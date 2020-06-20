@@ -29,9 +29,16 @@ function App() {
 
   return (
     <div className="App">
-
-      { list.map( (item, i) => <div key={i}>{item.title}</div> ) } 
-
+      {list.map((item, i) => (
+        <div key={i}>
+          <span>
+            <a href={item.url}>{item.title}</a>
+          </span>
+          <span>{item.author}</span>
+          <span>{item.num_comments}</span>
+          <span>{item.points}</span>
+        </div>
+      ))}
     </div>
   );
 }
