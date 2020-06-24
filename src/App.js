@@ -22,8 +22,6 @@ const list = [
 ];
 
 function App() {
-  const fname = "John";
-  const lname = "Doe";
 
   //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
 
