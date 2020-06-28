@@ -37,20 +37,26 @@ const list = [
 
 function App() {
 
-  let currentBooks = list;
-
   const [books, setBooks] = useState(list);
 
   function onDismiss(id, e) {
-    const updatedList = currentBooks.filter( i => i.objectID !== id );
-    console.log("id: " + id + ", updatedList: " + updatedList.length);
-    currentBooks = updatedList;
-    setBooks(updatedList);
+    let currentBooks = books.filter( i => i.objectID !== id );
+    console.log("After dismiss: id: " + id);
+    console.log("----> currentBooks after dismiss id: " + id);
+    printBooks(currentBooks);
+    console.log("===> original Books: ");
+    printBooks(books);
+    setBooks(currentBooks);
+  }
+
+  function printBooks(bks) {
+    if (bks) {
+      console.log(arguments.toString() + ": " + bks.map(e => e.objectID + ":" + e.title).join("\n"));
+    }
   }
 
   function onRestore(e) {
-    currentBooks = list;
-    setBooks(currentBooks);
+    setBooks(list);
   }
 
   //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
