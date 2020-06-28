@@ -37,12 +37,20 @@ const list = [
 
 function App() {
 
+  let currentBooks = list;
+
   const [books, setBooks] = useState(list);
 
-  function onDismiss(id) {
-    const updatedList = list.filter( i => i.objectID !== id );
+  function onDismiss(id, e) {
+    const updatedList = currentBooks.filter( i => i.objectID !== id );
     console.log("id: " + id + ", updatedList: " + updatedList.length);
+    currentBooks = updatedList;
     setBooks(updatedList);
+  }
+
+  function onRestore(e) {
+    currentBooks = list;
+    setBooks(currentBooks);
   }
 
   //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
@@ -60,6 +68,12 @@ function App() {
           <span>
             <button onClick={e => onDismiss(item.objectID, e)}
               type="button">Dismiss</button>
+          </span>
+          <span>
+            <button onClick={e => onRestore(e)}
+              type="button">
+                Restore
+            </button>
           </span>
         </div>
       ))}
