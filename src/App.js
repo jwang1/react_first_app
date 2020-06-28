@@ -39,18 +39,28 @@ function App() {
 
   const [books, setBooks] = useState(list);
 
+  function onDismiss(id) {
+    const updatedList = list.filter( i => i.objectID !== id );
+    console.log("id: " + id + ", updatedList: " + updatedList.length);
+    setBooks(updatedList);
+  }
+
   //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
 
   return (
     <div className="App">
       {books.map((item, i) => (
-        <div key={i}>
+        <div key={item.objectID}>
           <span>
             <a href={item.url}>{item.title}</a>
           </span>
           <span>{item.author}</span>
           <span>{item.num_comments}</span>
           <span>{item.points}</span>
+          <span>
+            <button onClick={e => onDismiss(item.objectID, e)}
+              type="button">Dismiss</button>
+          </span>
         </div>
       ))}
     </div>
