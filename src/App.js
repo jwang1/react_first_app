@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -36,11 +36,10 @@ const list = [
 // https://reactjs.org/docs/hooks-state.html
 
 function App() {
-
   const [books, setBooks] = useState(list);
 
   function onDismiss(id, e) {
-    let currentBooks = books.filter( i => i.objectID !== id );
+    let currentBooks = books.filter((i) => i.objectID !== id);
     console.log("After dismiss: id: " + id);
     console.log("----> currentBooks after dismiss id: " + id);
     printBooks(currentBooks);
@@ -51,7 +50,11 @@ function App() {
 
   function printBooks(bks) {
     if (bks) {
-      console.log(arguments.toString() + ": " + bks.map(e => e.objectID + ":" + e.title).join("\n"));
+      console.log(
+        arguments.toString() +
+          ": " +
+          bks.map((e) => e.objectID + ":" + e.title).join("\n")
+      );
     }
   }
 
@@ -63,6 +66,12 @@ function App() {
 
   return (
     <div className="App">
+      <span>
+        <button onClick={(e) => onRestore(e)} type="button">
+          Restore
+        </button>
+      </span>
+
       {books.map((item, i) => (
         <div key={item.objectID}>
           <span>
@@ -72,13 +81,8 @@ function App() {
           <span>{item.num_comments}</span>
           <span>{item.points}</span>
           <span>
-            <button onClick={e => onDismiss(item.objectID, e)}
-              type="button">Dismiss</button>
-          </span>
-          <span>
-            <button onClick={e => onRestore(e)}
-              type="button">
-                Restore
+            <button onClick={(e) => onDismiss(item.objectID, e)} type="button">
+              Dismiss
             </button>
           </span>
         </div>
