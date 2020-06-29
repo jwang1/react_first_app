@@ -39,6 +39,17 @@ function App() {
   const [books, setBooks] = useState(list);
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Higher order function -- isSearched function returns another function
+  // Note, this isSearched is used in the component, 
+  //       and the "searchTerm" is the state of the component <-- which changes along with
+  //       the form's input, the onSearchChanged fires when users input 
+  //          1) <-- when input changes 
+  //          2) <-- searchTerm "state" of the component changed,
+  //          3) <-- since searchTerm "state" is used in component's list element, 
+  //                 via isSearched higher-order-function used in list.filter(...), 
+  //
+  //          These trigger the hacker news list updated
+  //
   const isSearched = (searchTerm) => 
     (item) => !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -67,6 +78,7 @@ function App() {
   }
 
   function onSearchChange(e) {
+    console.log("e.target.value = " + e.target.value);
     setSearchTerm(e.target.value);
   }
 
