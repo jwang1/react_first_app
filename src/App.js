@@ -37,6 +37,10 @@ const list = [
 
 function App() {
   const [books, setBooks] = useState(list);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const isSearched = (searchTerm) => 
+    (item) => !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
   function onDismiss(id, e) {
     let currentBooks = books.filter((i) => i.objectID !== id);
@@ -62,6 +66,10 @@ function App() {
     setBooks(list);
   }
 
+  function onSearchChange(e) {
+    setSearchTerm(e.target.value);
+  }
+
   //const jsxPreventsCssByEscapingUserInput = response.potentiallyMaliciousInput;
 
   return (
@@ -72,7 +80,14 @@ function App() {
         </button>
       </span>
 
-      {books.map((item, i) => (
+      <div>
+        <form >
+          <input type="text" 
+          onChange={e => onSearchChange(e)}/>
+        </form>
+      </div>
+
+      {books.filter(isSearched(searchTerm)).map((item, i) => (
         <div key={item.objectID}>
           <span>
             <a href={item.url}>{item.title}</a>
