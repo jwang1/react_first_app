@@ -27,6 +27,14 @@ const list = [
     points: 5,
     objectID: 3,
   },
+  {
+    title: "Blender ",
+    url: "https://github.com/jwang1/blending",
+    author: "JR",
+    num_comments: 73,
+    points: 3,
+    objectID: 4,
+  }
 ];
 
 // Why react bootstrap creates function instead of class
@@ -95,6 +103,7 @@ function App() {
       <div>
         <form >
           <input type="text" 
+          value={searchTerm}
           onChange={e => onSearchChange(e)}/>
         </form>
       </div>
