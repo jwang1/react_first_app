@@ -1,5 +1,5 @@
 import React from "react";
-import FancyBorder from "../fancyBorder/FancyBorder";
+import FancyBorder from "../fancyBorder/fancyBorder";
 
 export default function WelcomeDialog(props) {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import WelcomeDialog from "./components/welcomeDialog/WelcomeDialog";
+import WelcomeDialog from "./components/welcomeDialog/welcomeDialog";
 
 const list = [
   {
