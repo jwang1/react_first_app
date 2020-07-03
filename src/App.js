@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import WelcomeDialog from "./components/welcomeDialog/WelcomeDialog";
 
 const list = [
   {
@@ -34,7 +35,7 @@ const list = [
     num_comments: 73,
     points: 3,
     objectID: 4,
-  }
+  },
 ];
 
 // Why react bootstrap creates function instead of class
@@ -45,21 +46,21 @@ const list = [
 
 function App() {
   const [books, setBooks] = useState(list);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Higher order function -- isSearched function returns another function
-  // Note, this isSearched is used in the component, 
+  // Note, this isSearched is used in the component,
   //       and the "searchTerm" is the state of the component <-- which changes along with
-  //       the form's input, the onSearchChanged fires when users input 
-  //          1) <-- when input changes 
+  //       the form's input, the onSearchChanged fires when users input
+  //          1) <-- when input changes
   //          2) <-- searchTerm "state" of the component changed,
-  //          3) <-- since searchTerm "state" is used in component's list element, 
-  //                 via isSearched higher-order-function used in list.filter(...), 
+  //          3) <-- since searchTerm "state" is used in component's list element,
+  //                 via isSearched higher-order-function used in list.filter(...),
   //
   //          These trigger the hacker news list updated
   //
-  const isSearched = (searchTerm) => 
-    (item) => !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  const isSearched = (searchTerm) => (item) =>
+    !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 
   function onDismiss(id, e) {
     let currentBooks = books.filter((i) => i.objectID !== id);
@@ -94,6 +95,10 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <WelcomeDialog />
+      </div>
+
       <span>
         <button onClick={(e) => onRestore(e)} type="button">
           Restore
@@ -101,10 +106,12 @@ function App() {
       </span>
 
       <div>
-        <form >
-          <input type="text" 
-          value={searchTerm}
-          onChange={e => onSearchChange(e)}/>
+        <form>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e)}
+          />
         </form>
       </div>
 
