@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import WelcomeDialog from "./components/welcomeDialog/welcomeDialog";
+import SplitPane from "./components/splitPane/splitPane";
 
 const list = [
   {
@@ -97,6 +98,13 @@ function App() {
     <div className="App">
       <div>
         <WelcomeDialog />
+      </div>
+
+      <div>
+        <SplitPane
+          left={<div>This is LEFT Pane</div>}
+          right={<div>Right Pane</div>}
+        ></SplitPane>
       </div>
 
       <span>
