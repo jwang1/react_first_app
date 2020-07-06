@@ -6,12 +6,12 @@ export default function WelcomeDialog(props) {
 
   return (
     <FancyBorder color="blue">
-      <h3 className="Dialog-title" style={fontStyle}>
+      <h5 className="Dialog-title" style={fontStyle}>
         Welcome
-      </h3>
-      <h3 className="Dialog-message" style={fontStyle}>
+      </h5>
+      <h5 className="Dialog-message" style={fontStyle}>
         This is a simple React.js playground.
-      </h3>
+      </h5>
     </FancyBorder>
   );
 }
